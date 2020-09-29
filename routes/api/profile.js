@@ -215,4 +215,67 @@ router.put(
 	}
 );
 
+// @route DELETE api/profile/books/:bk_id
+// @desc delete profile books
+// @access private
+
+router.delete('/books/:bk_id', auth, async (req, res) => {
+	try {
+		const profile = await Profile.findOne({ user: req.user.id });
+		// Get remove index
+		const removeIndex = profile.books
+			.map((item) => item.id)
+			.indexOf(req.params.bk_id);
+
+		profile.books.splice(removeIndex, 1);
+		await profile.save();
+		res.json(profile);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Sever Error');
+	}
+});
+
+// @route DELETE api/profile/movies/:mv_id
+// @desc delete profile movies
+// @access private
+
+router.delete('/movies/:mv_id', auth, async (req, res) => {
+	try {
+		const profile = await Profile.findOne({ user: req.user.id });
+		// Get remove index
+		const removeIndex = profile.movies
+			.map((item) => item.id)
+			.indexOf(req.params.mv_id);
+
+		profile.movies.splice(removeIndex, 1);
+		await profile.save();
+		res.json(profile);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Sever Error');
+	}
+});
+
+// @route DELETE api/profile/videogames/:vg_id
+// @desc delete profile videogames
+// @access private
+
+router.delete('/videogames/:vg_id', auth, async (req, res) => {
+	try {
+		const profile = await Profile.findOne({ user: req.user.id });
+		// Get remove index
+		const removeIndex = profile.videogames
+			.map((item) => item.id)
+			.indexOf(req.params.vg_id);
+
+		profile.videogames.splice(removeIndex, 1);
+		await profile.save();
+		res.json(profile);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Sever Error');
+	}
+});
+
 module.exports = router;
