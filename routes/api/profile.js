@@ -67,4 +67,152 @@ router.post(
 	}
 );
 
+// @route DELETE api/profile/
+// @desc Delete profile, user, and post
+// @access private
+
+router.delete('/', auth, async (req, res) => {
+	try {
+		// Remove Posts
+		await Post.deleteMany({ user: req.user.id });
+		// Remove Profile
+		await Profile.findOneAndRemove({ user: req.user.id });
+		// Remove the user
+		await User.findOneAndRemove({ _id: req.user.id });
+
+		res.json({ msg: 'user removed' });
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Sever Error');
+	}
+});
+
+// @route PUT api/profile//movies
+// @desc Add profile movies
+// @access private
+
+router.put(
+	'/movies',
+	[
+		auth,
+		[
+			check('title', 'Title is required').not().isEmpty(),
+			check('release', 'Release is required').not().isEmpty(),
+			check('length', 'Length is required').not().isEmpty(),
+			check('rating', 'Rating is required').not().isEmpty(),
+		],
+	],
+	async (req, res) => {
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			return res.status(400).json({ errors: errors.array() });
+		}
+		const { title, release, length, rating, description, url } = req.body;
+
+		const newMovie = {
+			title,
+			release,
+			length,
+			rating,
+			description,
+			url,
+		};
+
+		try {
+			const profile = await Profile.findOne({ user: req.user.id });
+			profile.movies.unshift(newMovie);
+			await profile.save();
+			res.json(profile);
+		} catch (err) {
+			console.error(err.message);
+			res.status(500).send('Sever Error');
+		}
+	}
+);
+
+// @route PUT api/profile//books
+// @desc Add profile books
+// @access private
+
+router.put(
+	'/books',
+	[
+		auth,
+		[
+			check('title', 'Title is required').not().isEmpty(),
+			check('release', 'Release is required').not().isEmpty(),
+			check('length', 'Length is required').not().isEmpty(),
+			check('rating', 'Rating is required').not().isEmpty(),
+		],
+	],
+	async (req, res) => {
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			return res.status(400).json({ errors: errors.array() });
+		}
+		const { title, release, length, rating, description, url } = req.body;
+
+		const newBook = {
+			title,
+			release,
+			length,
+			rating,
+			description,
+			url,
+		};
+
+		try {
+			const profile = await Profile.findOne({ user: req.user.id });
+			profile.books.unshift(newBook);
+			await profile.save();
+			res.json(profile);
+		} catch (err) {
+			console.error(err.message);
+			res.status(500).send('Sever Error');
+		}
+	}
+);
+// @route PUT api/profile//videogames
+// @desc Add profile videogames
+// @access private
+
+router.put(
+	'/videogames',
+	[
+		auth,
+		[
+			check('title', 'Title is required').not().isEmpty(),
+			check('release', 'Release is required').not().isEmpty(),
+			check('length', 'Length is required').not().isEmpty(),
+			check('rating', 'Rating is required').not().isEmpty(),
+		],
+	],
+	async (req, res) => {
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			return res.status(400).json({ errors: errors.array() });
+		}
+		const { title, release, length, rating, description, url } = req.body;
+
+		const newBook = {
+			title,
+			release,
+			length,
+			rating,
+			description,
+			url,
+		};
+
+		try {
+			const profile = await Profile.findOne({ user: req.user.id });
+			profile.videogames.unshift(newBook);
+			await profile.save();
+			res.json(profile);
+		} catch (err) {
+			console.error(err.message);
+			res.status(500).send('Sever Error');
+		}
+	}
+);
+
 module.exports = router;

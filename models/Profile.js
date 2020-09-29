@@ -11,15 +11,84 @@ const ProfileSchema = new mongoose.Schema({
 		required: true,
 	},
 
-	movies: {
-		type: [Object],
-	},
-	books: {
-		type: [Object],
-	},
-	videogames: {
-		type: [Object],
-	},
+	movies: [
+		{
+			title: {
+				type: String,
+				required: true,
+			},
+			release: {
+				type: Date,
+				required: true,
+			},
+			length: {
+				type: String,
+				required: true,
+			},
+			rating: {
+				type: String,
+				required: true,
+			},
+			url: {
+				type: String,
+			},
+			description: {
+				type: String,
+			},
+		},
+	],
+	books: [
+		{
+			title: {
+				type: String,
+				required: true,
+			},
+			release: {
+				type: Date,
+				required: true,
+			},
+			length: {
+				type: String,
+				required: true,
+			},
+			rating: {
+				type: String,
+				required: true,
+			},
+			url: {
+				type: String,
+			},
+			description: {
+				type: String,
+			},
+		},
+	],
+	videogames: [
+		{
+			title: {
+				type: String,
+				required: true,
+			},
+			release: {
+				type: Date,
+				required: true,
+			},
+			length: {
+				type: String,
+				required: true,
+			},
+			rating: {
+				type: String,
+				required: true,
+			},
+			url: {
+				type: String,
+			},
+			description: {
+				type: String,
+			},
+		},
+	],
 	date: {
 		type: Date,
 		default: Date.now,
