@@ -23,7 +23,7 @@ export const Login = ({ login, isAuthenticated }) => {
 
 	// Redirect if logged in
 	if (isAuthenticated) {
-		return <Redirect to='/movies' />;
+		return <Redirect to='/profile' />;
 	}
 
 	return (

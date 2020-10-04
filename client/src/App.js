@@ -5,9 +5,10 @@ import Landing from './components/layout/Landing';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Alert from './components/layout/Alert';
+import Dashboard from './components/dashboard/Dashboard';
+import PrivateRoute from './components/routing/PrivateRoute';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
-
 
 // Redux
 import { Provider } from 'react-redux';
@@ -20,9 +21,9 @@ if (localStorage.token) {
 }
 
 const App = () => {
-	useEffect(()=> {
-		store.dispatch(loadUser())
-	},[])
+	useEffect(() => {
+		store.dispatch(loadUser());
+	}, []);
 	return (
 		<Provider store={store}>
 			<Router>
@@ -34,6 +35,7 @@ const App = () => {
 						<Switch>
 							<Route exact path='/login' component={Login} />
 							<Route exact path='/register' component={Register} />
+							<PrivateRoute exact path='/profile' component={Dashboard} />
 						</Switch>
 					</section>
 				</Fragment>
