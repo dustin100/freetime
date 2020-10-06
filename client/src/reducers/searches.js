@@ -1,37 +1,32 @@
-import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE } from '../actions/types';
+import { USER_INPUT, SET_RESULTS, RESULTS_ERROR } from '../actions/types';
 
 const initialState = {
-	profile: null,
+	userInput: '',
+	results: [],
 	loading: true,
 	error: {},
 };
 
 export default function (state = initialState, action) {
 	const { type, payload } = action;
-
 	switch (type) {
-		case GET_PROFILE:
+		case SET_RESULTS:
 			return {
 				...state,
-				profile: payload,
+				results: payload,
 				loading: false,
+				error: {},
 			};
 
-		case PROFILE_ERROR:
+		case RESULTS_ERROR:
 			return {
 				...state,
 				error: payload,
 				loading: false,
+				results: [],
 			};
-		case CLEAR_PROFILE: {
-			return {
-				...state,
-				profile: null,
-				loading: false,
-			};
-		}
-		default: {
+
+		default:
 			return state;
-		}
 	}
 }
