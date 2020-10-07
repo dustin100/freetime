@@ -1,7 +1,13 @@
 import axios from 'axios';
-import { setAlert } from './alert';
 import { movieApi, bookApi, videoGameApi } from '../config';
-import { SET_RESULTS, RESULTS_ERROR } from './types';
+import {
+	MOVIES_ERROR,
+	GAMES_ERROR,
+	BOOKS_ERROR,
+	SET_MOVIES,
+	SET_GAMES,
+	SET_BOOKS,
+} from './types';
 
 export const getMovieResults = (input) => async (dispatch) => {
 	try {
@@ -11,20 +17,36 @@ export const getMovieResults = (input) => async (dispatch) => {
 				s: input,
 			},
 		});
-		if (moviesRequest.data.Search) {
+
+		const movieResult = moviesRequest.data.Search;
+
+		if (movieResult.length) {
+			const filteredMovies = movieResult.map((item) => {
+				return {
+					title: item.Title,
+					release: item.Year,
+					length: null,
+					rating: null,
+					url: item.Poster,
+					description: null,
+					id: item.imdbID,
+				};
+			});
+
 			dispatch({
-				type: SET_RESULTS,
-				payload: moviesRequest.data.Search,
+				type: SET_MOVIES,
+				payload: filteredMovies,
 			});
 		} else {
 			dispatch({
-				type: RESULTS_ERROR,
-				payload: { message: 'no results found' },
+				type: MOVIES_ERROR,
+				payload: { message: 'No Results Found' },
 			});
 		}
 	} catch (err) {
+		console.log(err.message);
 		dispatch({
-			type: RESULTS_ERROR,
+			type: MOVIES_ERROR,
 			payload: err,
 		});
 	}
@@ -39,22 +61,33 @@ export const getVideoGameResults = (input) => async (dispatch) => {
 				query: input,
 			},
 		});
-		console.log(gameRequest.data.results);
-		if (gameRequest.data.results.length > 0) {
+		const gameResults = gameRequest.data.results;
+
+		if (gameResults.length) {
+			const filteredGames = gameResults.map((item) => {
+				return {
+					title: item.name,
+					release: item.original_release_date || null,
+					length: null,
+					rating: null,
+					url: item.image.screen_large_url,
+					description: item.deck,
+					id: item.id,
+				};
+			});
 			dispatch({
-				type: SET_RESULTS,
-				payload: gameRequest.data.results,
+				type: SET_GAMES,
+				payload: filteredGames,
 			});
 		} else {
 			dispatch({
-				type: RESULTS_ERROR,
-				payload: { message: 'no results found' },
+				type: GAMES_ERROR,
+				payload: { message: 'No Results Found' },
 			});
-			dispatch(setAlert('no results', 'danger'));
 		}
 	} catch (err) {
 		dispatch({
-			type: RESULTS_ERROR,
+			type: GAMES_ERROR,
 			payload: err,
 		});
 	}
@@ -67,20 +100,34 @@ export const getBookResults = (input) => async (dispatch) => {
 				q: input,
 			},
 		});
-		if (bookRequest.data.items) {
+
+		const bookResults = bookRequest.data.items;
+		if (bookResults.length) {
+            const filteredBooks = bookResults.map((item) => {
+							return {
+								title: item.volumeInfo.title,
+								release: item.volumeInfo.publishedDate || null,
+								length: item.volumeInfo.pageCount,
+								rating: null,
+								url: item.volumeInfo.imageLinks.thumbnail,
+								description: item.volumeInfo.description,
+								id: item.id,
+							};
+						});
 			dispatch({
-				type: SET_RESULTS,
-				payload: bookRequest.data.items,
+				type: SET_BOOKS,
+				payload: filteredBooks,
 			});
 		} else {
 			dispatch({
-				type: RESULTS_ERROR,
-				payload: { message: 'no results found' },
+				type: BOOKS_ERROR,
+				payload: { message: 'No Results Found' },
 			});
 		}
 	} catch (err) {
+		console.log(err);
 		dispatch({
-			type: RESULTS_ERROR,
+			type: BOOKS_ERROR,
 			payload: err,
 		});
 	}

@@ -24,16 +24,15 @@ const SearchBar = ({
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		getMovieResults(input);
 		switch (category) {
 			case 'Movies':
-				getMovieResults();
+				getMovieResults(input);
 				break;
 			case 'Books':
-				getBookResults();
+				getBookResults(input);
 				break;
 			case 'Video Games':
-				getVideoGameResults();
+				getVideoGameResults(input);
 				break;
 			default:
 				break;
@@ -73,9 +72,7 @@ const SearchBar = ({
 
 SearchBar.propTypes = {};
 
-const mapStateToProps = (state) => ({});
-
-export default connect(mapStateToProps, {
+export default connect(null, {
 	getMovieResults,
 	getBookResults,
 	getVideoGameResults,
