@@ -3,18 +3,22 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SearchBar from '../layout/SearchBar';
 import Cards from './Cards';
+import { loadComponent } from '../../actions/searches';
 
-const GetStarted = ({ results }) => {
+const GetStarted = ({ results, loading, loadComponent }) => {
+	useEffect(() => {
+		loadComponent();
+	}, []);
 	return (
 		<Fragment>
 			<SearchBar />
-			{results.length ? (
-				<Cards />
-			) : (
+			{results.length && loading ? (
 				<p>
 					Start by Searching for movies, books, or video games and add them to
 					your list
 				</p>
+			) : (
+				<Cards />
 			)}
 		</Fragment>
 	);
@@ -26,4 +30,4 @@ const mapStateToProps = (state) => ({
 	results: state.searches.results,
 	loading: state.searches.loading,
 });
-export default connect(mapStateToProps)(GetStarted);
+export default connect(mapStateToProps, { loadComponent })(GetStarted);

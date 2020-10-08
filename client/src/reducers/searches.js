@@ -6,7 +6,7 @@ import {
 	SET_BOOKS,
 	BOOKS_ERROR,
 	CLEAR_RESULTS,
-	
+	COMPONENT_LOADED,
 } from '../actions/types';
 
 const initialState = {
@@ -45,7 +45,12 @@ export default function (state = initialState, action) {
 				loading: true,
 				results: [],
 			};
-		
+		case COMPONENT_LOADED: {
+			return {
+				...state,
+				loading: false,
+			};
+		}
 
 		default:
 			return state;

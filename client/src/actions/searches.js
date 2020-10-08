@@ -8,7 +8,7 @@ import {
 	SET_GAMES,
 	SET_BOOKS,
 	CLEAR_RESULTS,
-	
+	COMPONENT_LOADED,
 } from './types';
 
 export const getMovieResults = (input) => async (dispatch) => {
@@ -142,4 +142,8 @@ export const clearResults = () => (dispatch) => {
 	});
 };
 
-
+export const loadComponent = () => (dispatch) => {
+	dispatch({
+		type: COMPONENT_LOADED,
+	});
+};
