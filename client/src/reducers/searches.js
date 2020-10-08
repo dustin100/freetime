@@ -5,6 +5,8 @@ import {
 	GAMES_ERROR,
 	SET_BOOKS,
 	BOOKS_ERROR,
+	CLEAR_RESULTS,
+	
 } from '../actions/types';
 
 const initialState = {
@@ -36,6 +38,14 @@ export default function (state = initialState, action) {
 				loading: false,
 				results: [],
 			};
+		case CLEAR_RESULTS:
+			return {
+				...state,
+				error: null,
+				loading: true,
+				results: [],
+			};
+		
 
 		default:
 			return state;

@@ -404,6 +404,80 @@ button {
 	}
 }
 
+.cards {
+	display: grid;
+	justify-content: flex-start;
+	min-height: calc(80vh - 70px);
+	grid-template-columns: repeat(3, 1fr);
+	height: 100%;
+	grid-auto-rows: min-content;
+	grid-gap: 0.5rem;
+	justify-items: center;
+	margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 640px) {
+	.cards {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+@media only screen and (min-width: 767px) {
+	.cards {
+		min-height: calc(90vh - 70px);
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.cards {
+		grid-template-columns: repeat(5, 1fr);
+	}
+}
+
+.card {
+	width: 7rem;
+	height: 100%;
+	margin-bottom: 0.8rem;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
+
+.buttonGroup {
+	display: flex;
+	font-size: 0.7rem;
+}
+
+.card button {
+	border-radius: 0;
+	width: 50%;
+	padding: 0.3rem 0;
+	color: #fff;
+}
+.card img {
+	flex: 1;
+}
+
+.cardTop {
+	font-style: normal;
+	font-weight: 500;
+	font-size: 0.6rem;
+	line-height: 11px;
+	margin-bottom: 0.2rem;
+}
+
+.cardTop h2 {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	margin-bottom: 2px;
+	padding: 0.5rem 0;
+}
+
+.card_image {
+	width: 100%;
+	height: auto;
+}
 
 /* Spinner from https://projects.lukehaas.me/css-loaders/ */
 
@@ -462,5 +536,23 @@ button {
 	}
 	40% {
 		box-shadow: 0 2.5em 0 0;
+	}
+}
+
+@media only screen and (min-width: 767px) {
+	.card {
+		width: 10rem;
+	}
+}
+
+@media only screen and (min-width: 1050px) {
+	.card {
+		width: 13rem;
+	}
+}
+
+@media only screen and (min-width: 1600px) {
+	.card {
+		width: 15rem;
 	}
 }

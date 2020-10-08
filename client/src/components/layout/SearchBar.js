@@ -5,12 +5,14 @@ import {
 	getMovieResults,
 	getBookResults,
 	getVideoGameResults,
+	clearResults,
 } from '../../actions/searches';
 
 const SearchBar = ({
 	getMovieResults,
 	getBookResults,
 	getVideoGameResults,
+	clearResults,
 }) => {
 	const [formData, setFormData] = useState({
 		input: '',
@@ -24,6 +26,7 @@ const SearchBar = ({
 
 	const onSubmit = (e) => {
 		e.preventDefault();
+		clearResults();
 		switch (category) {
 			case 'Movies':
 				getMovieResults(input);
@@ -57,7 +60,7 @@ const SearchBar = ({
 				id='site-search'
 				name='input'
 				required
-				placeholder='search for a movie or tv show'
+				placeholder='search for something'
 				aria-label='Search through site content'
 				value={input}
 				onChange={onChange}
@@ -76,4 +79,5 @@ export default connect(null, {
 	getMovieResults,
 	getBookResults,
 	getVideoGameResults,
+	clearResults,
 })(SearchBar);

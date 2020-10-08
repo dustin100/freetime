@@ -7,6 +7,8 @@ import {
 	SET_MOVIES,
 	SET_GAMES,
 	SET_BOOKS,
+	CLEAR_RESULTS,
+	
 } from './types';
 
 export const getMovieResults = (input) => async (dispatch) => {
@@ -59,6 +61,7 @@ export const getVideoGameResults = (input) => async (dispatch) => {
 				api_key: videoGameApi.key,
 				format: 'json',
 				query: input,
+				resources: 'game',
 			},
 		});
 		const gameResults = gameRequest.data.results;
@@ -103,17 +106,17 @@ export const getBookResults = (input) => async (dispatch) => {
 
 		const bookResults = bookRequest.data.items;
 		if (bookResults.length) {
-            const filteredBooks = bookResults.map((item) => {
-							return {
-								title: item.volumeInfo.title,
-								release: item.volumeInfo.publishedDate || null,
-								length: item.volumeInfo.pageCount,
-								rating: null,
-								url: item.volumeInfo.imageLinks.thumbnail,
-								description: item.volumeInfo.description,
-								id: item.id,
-							};
-						});
+			const filteredBooks = bookResults.map((item) => {
+				return {
+					title: item.volumeInfo.title,
+					release: item.volumeInfo.publishedDate || null,
+					length: item.volumeInfo.pageCount,
+					rating: null,
+					url: item.volumeInfo.imageLinks.thumbnail,
+					description: item.volumeInfo.description,
+					id: item.id,
+				};
+			});
 			dispatch({
 				type: SET_BOOKS,
 				payload: filteredBooks,
@@ -132,3 +135,11 @@ export const getBookResults = (input) => async (dispatch) => {
 		});
 	}
 };
+
+export const clearResults = () => (dispatch) => {
+	dispatch({
+		type: CLEAR_RESULTS,
+	});
+};
+
+

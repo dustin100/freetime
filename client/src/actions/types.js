@@ -17,3 +17,5 @@ export const SET_GAMES = 'SET_GAMES';
 export const GAMES_ERROR = 'GAMES_ERROR';
 export const BOOKS_ERROR = 'BOOKS_ERROR';
 export const SET_BOOKS = 'SET_BOOKS';
+export const CLEAR_RESULTS = 'CLEAR_RESULTS';
+export const COMPONENT_LOADED = 'COMPONENT_LOADED';
