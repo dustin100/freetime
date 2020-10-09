@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
@@ -29,6 +29,11 @@ const Cards = ({ results, loading }) => {
 			<div className='cards'>{cards}</div>
 		</Fragment>
 	);
+};
+
+Cards.propTypes = {
+	results: PropTypes.array.isRequired,
+	loading: PropTypes.bool.isRequired,
 };
 const mapStateToProps = (state) => ({
 	results: state.searches.results,

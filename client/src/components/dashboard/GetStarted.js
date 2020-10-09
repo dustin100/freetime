@@ -8,11 +8,11 @@ import { loadComponent } from '../../actions/searches';
 const GetStarted = ({ results, loading, loadComponent }) => {
 	useEffect(() => {
 		loadComponent();
-	}, []);
+	}, [loadComponent]);
 	return (
 		<Fragment>
 			<SearchBar />
-			{results.length && loading ? (
+			{!results.length && !loading ? (
 				<p>
 					Start by Searching for movies, books, or video games and add them to
 					your list
@@ -24,7 +24,10 @@ const GetStarted = ({ results, loading, loadComponent }) => {
 	);
 };
 
-GetStarted.propTypes = {};
+GetStarted.propTypes = {
+	results: PropTypes.array.isRequired,
+	loading: PropTypes.bool.isRequired,
+};
 
 const mapStateToProps = (state) => ({
 	results: state.searches.results,

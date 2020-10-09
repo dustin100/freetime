@@ -32,6 +32,7 @@ export const getMovieResults = (input) => async (dispatch) => {
 					url: item.Poster,
 					description: null,
 					id: item.imdbID,
+					content: 'movie'
 				};
 			});
 
@@ -76,6 +77,7 @@ export const getVideoGameResults = (input) => async (dispatch) => {
 					url: item.image.screen_large_url,
 					description: item.deck,
 					id: item.id,
+					content: 'game'
 				};
 			});
 			dispatch({
@@ -115,6 +117,7 @@ export const getBookResults = (input) => async (dispatch) => {
 					url: item.volumeInfo.imageLinks.thumbnail,
 					description: item.volumeInfo.description,
 					id: item.id,
+					content: 'book'
 				};
 			});
 			dispatch({

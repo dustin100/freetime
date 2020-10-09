@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 const Card = ({ title, release, length, rating, url, description, id }) => {
 	return (
@@ -22,7 +20,4 @@ const Card = ({ title, release, length, rating, url, description, id }) => {
 	);
 };
 
-Card.propTypes = {};
-
 export default Card;
-

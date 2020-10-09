@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
-import { SET_ALERT, REMOVE_ALERT } from '../../actions/types';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import { Redirect } from 'react-router-dom';

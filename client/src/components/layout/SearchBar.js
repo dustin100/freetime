@@ -73,7 +73,12 @@ const SearchBar = ({
 	);
 };
 
-SearchBar.propTypes = {};
+SearchBar.propTypes = {
+	getBookResults: PropTypes.func.isRequired,
+	getMovieResults: PropTypes.func.isRequired,
+	getVideoGameResults: PropTypes.func.isRequired,
+	clearResults: PropTypes.func.isRequired,
+};
 
 export default connect(null, {
 	getMovieResults,
