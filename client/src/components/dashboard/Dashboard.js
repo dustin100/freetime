@@ -2,7 +2,9 @@ import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
+import { Redirect } from 'react-router-dom';
 import { getCurrentProfile } from '../../actions/profile';
+import ProfileSetup from './ProfileSetup';
 
 const Dashboard = ({
 	getCurrentProfile,
@@ -19,8 +21,15 @@ const Dashboard = ({
 		<Fragment>
 			<h1 className='large text-primary'>Profile</h1>
 			<p className='lead'>Welcome {user && user.name}</p>
-			{profile !== null ? <Fragment>Has Profile</Fragment> :
-			<Fragment>no Profile</Fragment>}
+			{profile !== null ? (
+				<Fragment>
+					<Redirect to='/get-started' />
+				</Fragment>
+			) : (
+				<Fragment>
+					<ProfileSetup name={user && user.name} />
+				</Fragment>
+			)}
 		</Fragment>
 	);
 };
