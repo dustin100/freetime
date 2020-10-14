@@ -21,18 +21,18 @@ export const getMovieResults = (input) => async (dispatch) => {
 		});
 
 		const movieResult = moviesRequest.data.Search;
-
+		console.log(movieResult);
 		if (movieResult.length) {
 			const filteredMovies = movieResult.map((item) => {
 				return {
 					title: item.Title,
 					release: item.Year,
-					length: null,
-					rating: null,
+					length: 'N/A',
+					rating: 'N/A',
 					url: item.Poster,
-					description: null,
+					description: 'N/A',
 					id: item.imdbID,
-					content: 'movie'
+					content: 'movie',
 				};
 			});
 
@@ -71,13 +71,13 @@ export const getVideoGameResults = (input) => async (dispatch) => {
 			const filteredGames = gameResults.map((item) => {
 				return {
 					title: item.name,
-					release: item.original_release_date || null,
-					length: null,
-					rating: null,
+					release: item.original_release_date || 'N/A',
+					length: 'N/A',
+					rating: 'N/A',
 					url: item.image.screen_large_url,
 					description: item.deck,
 					id: item.id,
-					content: 'game'
+					content: 'game',
 				};
 			});
 			dispatch({
@@ -111,13 +111,13 @@ export const getBookResults = (input) => async (dispatch) => {
 			const filteredBooks = bookResults.map((item) => {
 				return {
 					title: item.volumeInfo.title,
-					release: item.volumeInfo.publishedDate || null,
+					release: item.volumeInfo.publishedDate || 'N/A',
 					length: item.volumeInfo.pageCount,
-					rating: null,
+					rating: 'N/A',
 					url: item.volumeInfo.imageLinks.thumbnail,
 					description: item.volumeInfo.description,
 					id: item.id,
-					content: 'book'
+					content: 'book',
 				};
 			});
 			dispatch({

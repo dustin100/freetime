@@ -6,7 +6,7 @@ import Card from './Card';
 
 const Cards = ({ results, loading }) => {
 	const cards = results.map(
-		({ title, release, length, rating, url, description, id }) => {
+		({ title, release, length, rating, url, description, id, content }) => {
 			return (
 				<Card
 					key={id}
@@ -17,6 +17,7 @@ const Cards = ({ results, loading }) => {
 					url={url}
 					description={description}
 					id={id}
+					content={content}
 				/>
 			);
 		}

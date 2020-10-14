@@ -19,3 +19,5 @@ export const BOOKS_ERROR = 'BOOKS_ERROR';
 export const SET_BOOKS = 'SET_BOOKS';
 export const CLEAR_RESULTS = 'CLEAR_RESULTS';
 export const COMPONENT_LOADED = 'COMPONENT_LOADED';
+export const UPDATE_LISTS = 'UPDATE_LISTS';
+
