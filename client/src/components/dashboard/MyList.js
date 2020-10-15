@@ -32,7 +32,7 @@ const MyList = ({
 	return isEmpty ? (
 		<Fragment>
 			<p>Your List is Empty</p>
-			<Link to='/get-started'>
+			<Link to='/search'>
 				<button className='btn btn-primary'>Start Searching</button>
 			</Link>
 		</Fragment>
