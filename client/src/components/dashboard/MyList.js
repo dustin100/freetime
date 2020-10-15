@@ -1,64 +1,34 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import Slider from 'react-slick';
+import ListRows from './ListRows';
+import { deleteGame, deleteBook, deleteMovie } from '../../actions/profile';
 
 const MyList = ({
 	profile: {
 		profile: { movies, books, videogames },
 	},
+	deleteBook,
+	deleteGame,
+	deleteMovie,
 }) => {
-	const settings = {
-		infinite: true,
-		speed: 500,
-		slidesToShow: 3,
-		slidesToScroll: 3,
-		accessibility: true,
-		variableWidth: true,
+	const onMovieClick = (id) => {
+		deleteMovie(id);
 	};
 
-	const onClick = () => {
-		console.log('something');
-	};
-	const createList = (arr) => {
-		const list = arr.map(({ title, release, url }) => {
-			return (
-				<div>
-					<div className='card'>
-						<div className='cardTop'>
-							<h2>{title}</h2>
-							<p className='releaseYear'>{release}</p>
-						</div>
-						<img className='card_image' src={url} alt={title} />
-						<div className='buttonGroup'>
-							<button onClick={onClick} className='btn-primary'>
-								<i className='fas fa-plus'></i>
-							</button>
-							<button className='btn-primary'>
-								<i className='fas fa-minus'></i>
-							</button>
-						</div>
-					</div>
-				</div>
-			);
-		});
-		return list;
+	const onGameClick = (id) => {
+		deleteGame(id);
 	};
 
-	const movieList = createList(movies);
-	const bookList = createList(books);
-	const gameList = createList(videogames);
+	const onBookClick = (id) => {
+		deleteBook(id);
+	};
 
 	return (
 		<Fragment>
-            <h2>Movies</h2>
-			<Slider {...settings}>{movieList}</Slider>
-            <h2>Books</h2>
-			<Slider {...settings}>{movieList}</Slider>
-            <h2>Video Games</h2>
-			<Slider {...settings}>{movieList}</Slider>
+			<ListRows list={movies} title='Movies' clicked={onMovieClick} />
+			<ListRows list={books} title='Books' clicked={onBookClick} />
+			<ListRows list={videogames} title='Games' clicked={onGameClick} />
 		</Fragment>
 	);
 };
@@ -69,4 +39,8 @@ const mapStateToProps = (state) => ({
 	profile: state.profile,
 });
 
-export default connect(mapStateToProps)(MyList);
+export default connect(mapStateToProps, {
+	deleteBook,
+	deleteGame,
+	deleteMovie,
+})(MyList);

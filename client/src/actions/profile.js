@@ -121,3 +121,54 @@ export const addVideoGame = (cardObject) => async (dispatch) => {
 		});
 	}
 };
+
+// Delete movie card
+export const deleteMovie = (id) => async (dispatch) => {
+	try {
+		const res = await axios.delete(`/api/profile/movies/${id}`);
+		dispatch({
+			type: UPDATE_LISTS,
+			payload: res.data,
+		});
+		dispatch(setAlert('Movie Removed', 'danger'));
+	} catch (err) {
+		dispatch({
+			type: PROFILE_ERROR,
+			payload: { msg: err.statusText, status: err.response.status },
+		});
+	}
+};
+
+// Delete book card
+export const deleteBook = (id) => async (dispatch) => {
+	try {
+		const res = await axios.delete(`/api/profile/books/${id}`);
+		dispatch({
+			type: UPDATE_LISTS,
+			payload: res.data,
+		});
+		dispatch(setAlert('Book Removed', 'danger'));
+	} catch (err) {
+		dispatch({
+			type: PROFILE_ERROR,
+			payload: { msg: err.statusText, status: err.response.status },
+		});
+	}
+};
+
+// Delete game card
+export const deleteGame = (id) => async (dispatch) => {
+	try {
+		const res = await axios.delete(`/api/profile/videogames/${id}`);
+		dispatch({
+			type: UPDATE_LISTS,
+			payload: res.data,
+		});
+		dispatch(setAlert('Game Removed', 'danger'));
+	} catch (err) {
+		dispatch({
+			type: PROFILE_ERROR,
+			payload: { msg: err.statusText, status: err.response.status },
+		});
+	}
+};

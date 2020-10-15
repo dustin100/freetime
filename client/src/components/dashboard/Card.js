@@ -24,6 +24,7 @@ const Card = ({
 		url,
 		description,
 		id,
+		content,
 	};
 
 	const onClick = () => {
