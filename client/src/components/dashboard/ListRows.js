@@ -44,7 +44,7 @@ const ListRows = ({ list, title, clicked }) => {
 		<Fragment>
 			{!list.length ? null : (
 				<Fragment>
-					<h2>{title}</h2>
+					<h2 className='medium text-primary'>{title}</h2>
 					<Slider {...settings}>{listRow}</Slider>
 				</Fragment>
 			)}

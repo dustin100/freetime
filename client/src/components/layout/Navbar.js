@@ -9,7 +9,10 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading, profile } }) => {
 		<ul>
 			<li>
 				<Link to='/profile'>
-					<i className='fas fa-user'></i> Profile{' '}
+					<i className='fas fa-th-list'></i> My List{' '}
+				</Link>
+				<Link to='/get-started'>
+					<i className='fas fa-search'></i> Search{' '}
 				</Link>
 			</li>
 			<li>

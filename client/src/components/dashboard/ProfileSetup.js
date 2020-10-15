@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile } from '../../actions/profile';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 const ProfileSetup = ({ createProfile, history, name }) => {
 	const setupData = {
@@ -14,7 +14,7 @@ const ProfileSetup = ({ createProfile, history, name }) => {
 
 	return (
 		<Fragment>
-			<h2>How it works</h2>
+			<h2 className='medium text-primary'>How it works</h2>
 			<ul>
 				<li>Step 1</li>
 				<li>Step 2</li>

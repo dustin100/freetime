@@ -2,7 +2,6 @@ import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
-import { Redirect } from 'react-router-dom';
 import { getCurrentProfile } from '../../actions/profile';
 import ProfileSetup from './ProfileSetup';
 import MyList from './MyList';
@@ -20,12 +19,11 @@ const Dashboard = ({
 		<Spinner />
 	) : (
 		<Fragment>
-			<h1 className='large text-primary'>Profile</h1>
+			<h1 className='large text-primary'>My List</h1>
 			<p className='lead'>Welcome {user && user.name}</p>
 			{profile !== null ? (
 				<Fragment>
 					<MyList />
-					{/* <Redirect to='/get-started' /> */}
 				</Fragment>
 			) : (
 				<Fragment>
