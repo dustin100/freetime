@@ -5,6 +5,7 @@ import Spinner from '../layout/Spinner';
 import { Redirect } from 'react-router-dom';
 import { getCurrentProfile } from '../../actions/profile';
 import ProfileSetup from './ProfileSetup';
+import MyList from './MyList';
 
 const Dashboard = ({
 	getCurrentProfile,
@@ -23,7 +24,8 @@ const Dashboard = ({
 			<p className='lead'>Welcome {user && user.name}</p>
 			{profile !== null ? (
 				<Fragment>
-					<Redirect to='/get-started' />
+					<MyList />
+					{/* <Redirect to='/get-started' /> */}
 				</Fragment>
 			) : (
 				<Fragment>

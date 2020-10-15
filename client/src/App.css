@@ -442,7 +442,13 @@ button {
 	flex-direction: column;
 	align-items: stretch;
 }
-
+.slick-slide {
+	margin-right: 1rem;
+}
+.slick-prev::before,
+.slick-next::before {
+	color: black;
+}
 .buttonGroup {
 	display: flex;
 	font-size: 0.7rem;
