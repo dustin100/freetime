@@ -1,0 +1,74 @@
+.cards {
+	display: grid;
+	justify-content: flex-start;
+	min-height: calc(80vh - 70px);
+	grid-template-columns: repeat(3, 1fr);
+	height: 100%;
+	grid-auto-rows: min-content;
+	grid-gap: 0.5rem;
+	justify-items: center;
+	margin-bottom: 1rem;
+}
+
+.card-wrapper {
+	height: 100%;
+}
+.card {
+	width: 7rem;
+	height: 100%;
+	margin-bottom: 0.8rem;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
+.slick-track {
+	display: flex !important;
+}
+.slick-slide {
+	height: inherit !important;
+	display: flex !important;
+	justify-content: center;
+	align-items: stretch;
+	margin-right: 1rem;
+	margin-bottom: 3rem;
+}
+
+.slick-prev::before,
+.slick-next::before {
+	color: black;
+}
+
+.card button {
+	border-radius: 0;
+	padding: 0.3rem 0;
+	color: #fff;
+	width: 100%;
+}
+.card button:hover {
+	cursor: pointer;
+	opacity: 0.5;
+}
+.card img {
+	flex: 1;
+}
+
+.cardTop {
+	font-style: normal;
+	font-weight: 500;
+	font-size: 0.6rem;
+	line-height: 11px;
+	margin-bottom: 0.2rem;
+}
+
+.cardTop h2 {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	margin-bottom: 2px;
+	padding: 0.5rem 0;
+}
+
+.card_image {
+	width: 100%;
+	height: auto;
+}
