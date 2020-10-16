@@ -27,14 +27,10 @@ const ListRows = ({ list, title, clicked }) => {
 						<p className='releaseYear'>{release}</p>
 					</div>
 					<img className='card_image' src={url} alt={title} />
-					<div className='buttonGroup'>
-						<button onClick={() => onClick(_id)} className='btn-primary'>
-							<i className='fas fa-plus'></i>
-						</button>
-						<button className='btn-primary'>
-							<i className='fas fa-minus'></i>
-						</button>
-					</div>
+
+					<button onClick={() => onClick(_id)} className='btn-primary'>
+						Remove
+					</button>
 				</div>
 			</div>
 		);

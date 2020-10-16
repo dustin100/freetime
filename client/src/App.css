@@ -68,6 +68,7 @@ img {
 	font-size: 3rem;
 	line-height: 1.2;
 	margin-bottom: 1rem;
+	text-transform: capitalize;
 }
 
 .lead {
@@ -449,16 +450,16 @@ button {
 .slick-next::before {
 	color: black;
 }
-.buttonGroup {
-	display: flex;
-	font-size: 0.7rem;
-}
 
 .card button {
 	border-radius: 0;
-	width: 50%;
 	padding: 0.3rem 0;
 	color: #fff;
+	width: 100%;
+}
+.card button:hover {
+	cursor: pointer;
+	opacity: 0.5;
 }
 .card img {
 	flex: 1;

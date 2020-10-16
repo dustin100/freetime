@@ -19,8 +19,7 @@ const Dashboard = ({
 		<Spinner />
 	) : (
 		<Fragment>
-			<h1 className='large text-primary'>My List</h1>
-			<p className='lead'>Welcome {user && user.name}</p>
+			<h1 className='large text-primary'>{user && user.name}'s List</h1>
 			{profile !== null ? (
 				<Fragment>
 					<MyList />

@@ -45,7 +45,7 @@ const SearchBar = ({
 	return (
 		<form onSubmit={onSubmit}>
 			<select name='category' value={category} onChange={(e) => onChange(e)}>
-				<option value='0'>* Select Category </option>
+				<option value='default'>* Select Category </option>
 				<option value='Movies'>Movies</option>
 				<option value='Books'>Books</option>
 				<option value='Video Games'>Video Games</option>
