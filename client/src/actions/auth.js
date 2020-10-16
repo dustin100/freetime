@@ -10,6 +10,7 @@ import {
 	LOGIN_SUCCESS,
 	LOGOUT,
 	CLEAR_PROFILE,
+	CLEAR_RESULTS,
 } from './types';
 
 // Load user
@@ -96,5 +97,9 @@ export const logout = () => (dispatch) => {
 	});
 	dispatch({
 		type: LOGOUT,
+	});
+
+	dispatch({
+		type: CLEAR_RESULTS,
 	});
 };
