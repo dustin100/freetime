@@ -43,9 +43,11 @@ const SearchBar = ({
 	};
 
 	return (
-		<form onSubmit={onSubmit}>
+		<form className='searchBar' onSubmit={onSubmit}>
 			<select name='category' value={category} onChange={(e) => onChange(e)}>
-				<option value='default'>* Select Category </option>
+				<option value='default' hidden>
+					* Select Category{' '}
+				</option>
 				<option value='Movies'>Movies</option>
 				<option value='Books'>Books</option>
 				<option value='Video Games'>Video Games</option>
@@ -55,7 +57,6 @@ const SearchBar = ({
 				Search the site:
 			</label>
 			<input
-				className='searchSite'
 				type='search'
 				id='site-search'
 				name='input'
