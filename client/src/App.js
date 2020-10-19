@@ -11,6 +11,12 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
+// Material UI
+import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import theme from './theme';
+import Container from '@material-ui/core/Container';
+
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -27,21 +33,24 @@ const App = () => {
 	}, []);
 	return (
 		<Provider store={store}>
-			<Router>
-				<Fragment>
-					<NavBar />
-					<Route exact path='/' component={Landing} />
-					<section className='container'>
-						<Alert />
-						<Switch>
-							<Route exact path='/login' component={Login} />
-							<Route exact path='/register' component={Register} />
-							<PrivateRoute exact path='/profile' component={Dashboard} />
-							<PrivateRoute exact path='/search' component={GetStarted} />
-						</Switch>
-					</section>
-				</Fragment>
-			</Router>
+			<ThemeProvider theme={theme}>
+				<CssBaseline />
+				<Router>
+					<Fragment>
+						<NavBar />
+						<Route exact path='/' component={Landing} />
+						<section className='container'>
+							<Alert />
+							<Switch>
+								<Route exact path='/login' component={Login} />
+								<Route exact path='/register' component={Register} />
+								<PrivateRoute exact path='/profile' component={Dashboard} />
+								<PrivateRoute exact path='/search' component={GetStarted} />
+							</Switch>
+						</section>
+					</Fragment>
+				</Router>
+			</ThemeProvider>
 		</Provider>
 	);
 };
