@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+
+import {
+	InputLabel,
+	Grid,
+	MenuItem,
+	FormHelperText,
+	FormControl,
+	Select,
+	Button,
+	TextField,
+	makeStyles,
+	Container,
+} from '@material-ui/core';
+
 import {
 	getMovieResults,
 	getBookResults,
@@ -15,12 +22,25 @@ import {
 	clearResults,
 } from '../../actions/searches';
 
+const useStyles = makeStyles((theme) => ({
+	form: {
+		width: '100%', // Fix IE 11 issue.
+		marginTop: theme.spacing(1),
+	},
+	submit: {
+		padding: theme.spacing(2, 2),
+		margin: theme.spacing(1, 0, 0, 0),
+	},
+}));
+
 const SearchBar = ({
 	getMovieResults,
 	getBookResults,
 	getVideoGameResults,
 	clearResults,
 }) => {
+	const classes = useStyles();
+
 	const [formData, setFormData] = useState({
 		input: '',
 		category: '',
@@ -50,27 +70,30 @@ const SearchBar = ({
 	};
 
 	return (
-		<form className='searchBar' onSubmit={onSubmit}>
-			<FormControl className='selectBox'>
-				<InputLabel id='category'>Category</InputLabel>
-				<Select
-					labelId='demo-simple-select-helper-label'
-					id='demo-simple-select-helper'
-					value={category}
-					onChange={(e) => onChange(e)}
-					name='category'
-					autoFocus>
-					<MenuItem value=''>
-						<em>None</em>
-					</MenuItem>
-					<MenuItem value='Movies'>Movies</MenuItem>
-					<MenuItem value='Books'>Books</MenuItem>
-					<MenuItem value='Video Games'>Video Games</MenuItem>
-				</Select>
-				<FormHelperText>Pick a category</FormHelperText>
-			</FormControl>
+		<Container component='main' maxWidth='xl'>
+			<form className={classes.form} onSubmit={onSubmit}>
+				<Grid container direction='row' justify='center' alignItems='center'>
+					<Grid item xs={3} spacing={0}>
+						<FormControl fullWidth>
+							<InputLabel id='category'>Category</InputLabel>
+							<Select
+								labelId='demo-simple-select-helper-label'
+								id='demo-simple-select-helper'
+								value={category}
+								onChange={(e) => onChange(e)}
+								name='category'>
+								<MenuItem value=''>
+									<em>None</em>
+								</MenuItem>
+								<MenuItem value='Movies'>Movies</MenuItem>
+								<MenuItem value='Books'>Books</MenuItem>
+								<MenuItem value='Video Games'>Video Games</MenuItem>
+							</Select>
+							<FormHelperText>Pick a category</FormHelperText>
+						</FormControl>
+					</Grid>
 
-			{/* <select name='category' value={category} onChange={(e) => onChange(e)}>
+					{/* <select name='category' value={category} onChange={(e) => onChange(e)}>
 				<option value='default' hidden>
 					* Select Category{' '}
 				</option>
@@ -79,22 +102,24 @@ const SearchBar = ({
 				<option value='Video Games'>Video Games</option>
 			</select> */}
 
-			{/* <label className='visuallyHidden' htmlFor='site-search'>
+					{/* <label className='visuallyHidden' htmlFor='site-search'>
 				Search the site:
 			</label> */}
-			<TextField
-				className='searchTextField'
-				variant='outlined'
-				required
-				placeholder='Search Something'
-				type='search'
-				label='search'
-				onChange={onChange}
-				margin='normal'
-				name='input'
-				value={input}
-			/>
-			{/* <input
+					<Grid item xs={8} spacing={0}>
+						<TextField
+							variant='outlined'
+							required
+							placeholder='Search Something'
+							type='search'
+							label='search'
+							onChange={onChange}
+							margin='normal'
+							name='input'
+							fullWidth
+							value={input}
+						/>
+					</Grid>
+					{/* <input
 				type='search'
 				id='site-search'
 				name='input'
@@ -104,15 +129,18 @@ const SearchBar = ({
 				value={input}
 				onChange={onChange}
 			/> */}
-
-			<Button
-				className='searchButton'
-				type='submit'
-				variant='contained'
-				color='primary'>
-				Search
-			</Button>
-		</form>
+					<Grid item xs={1} spacing={0}>
+						<Button
+							className={classes.submit}
+							type='submit'
+							variant='contained'
+							color='primary'>
+							Search
+						</Button>
+					</Grid>
+				</Grid>
+			</form>
+		</Container>
 	);
 };
 
