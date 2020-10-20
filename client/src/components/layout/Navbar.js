@@ -3,7 +3,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
-import { AlarmOnOutlinedIcon } from '@material-ui/icons/Menu';
 import {
 	Typography,
 	makeStyles,
