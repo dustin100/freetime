@@ -42,7 +42,7 @@ const Card = ({
 	return (
 		<div className='card'>
 			<div className='cardTop'>
-				<Typography variant='body2' component='h2'>
+				<Typography variant='body2' component='h3'>
 					{title}
 				</Typography>
 			</div>

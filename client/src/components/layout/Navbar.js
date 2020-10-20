@@ -9,8 +9,11 @@ import {
 	Toolbar,
 	AppBar,
 	Link,
+	Button,
 } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import UpdateIcon from '@material-ui/icons/Update';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -26,53 +29,69 @@ const useStyles = makeStyles((theme) => ({
 		color: '#fff',
 	},
 	navLinks: {
-		marginRight: theme.spacing(2),
+		marginRight: theme.spacing(1),
+		'&:hover': {
+			backgroundColor: 'transparent',
+			textDecoration: 'underline',
+		},
+	},
+	logo: {
+		display: 'flex',
+	},
+	logoText: {
+		marginLeft: 8,
 	},
 }));
 
 const Navbar = ({ logout, auth: { isAuthenticated, loading, profile } }) => {
 	const classes = useStyles();
 	const authLinks = (
-		<Typography className={classes.root}>
-			<Link
+		<Fragment>
+			<Button
 				className={classes.navLinks}
 				component={RouterLink}
 				to='/profile'
-				color='inherit'>
-				<i className='fas fa-th-list'></i> My List{' '}
-			</Link>
-			<Link
+				color='inherit'
+				startIcon={<FormatListBulletedIcon color='secondary' />}>
+				My List
+			</Button>
+			<Button
 				className={classes.navLinks}
 				component={RouterLink}
 				to='/search'
-				color='inherit'>
-				<i className='fas fa-search'></i> Search
-			</Link>
+				color='inherit'
+				startIcon={<SearchIcon color='secondary' />}>
+				Search
+			</Button>
 
-			<Link
+			<Button
 				color='inherit'
 				className={classes.navLinks}
 				component={RouterLink}
 				onClick={logout}
 				to='/'>
 				Logout
-			</Link>
-		</Typography>
+			</Button>
+		</Fragment>
 	);
 
 	const guestLinks = (
 		<Typography className={classes.root}>
-			<Link
+			<Button
 				className={classes.navLinks}
 				component={RouterLink}
 				to='/register'
 				color='inherit'>
 				Register
-			</Link>
+			</Button>
 
-			<Link component={RouterLink} to='/login' color='inherit'>
+			<Button
+				className={classes.navLinks}
+				component={RouterLink}
+				to='/login'
+				color='inherit'>
 				Login
-			</Link>
+			</Button>
 		</Typography>
 	);
 
@@ -82,7 +101,10 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading, profile } }) => {
 				<Toolbar>
 					<Typography variant='h5' className={classes.title}>
 						<Link component={RouterLink} color='inherit' to='/'>
-							<i className='fas fa-hourglass-half'></i> Free Time
+							<div className={classes.logo}>
+								<UpdateIcon color='secondary' fontSize='large' />{' '}
+								<div className={classes.logoText}>Free Time</div>
+							</div>
 						</Link>
 					</Typography>
 					{!loading && (

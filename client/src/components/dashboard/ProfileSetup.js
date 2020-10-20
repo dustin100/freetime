@@ -66,7 +66,6 @@ const ProfileSetup = ({ createProfile, history, name }) => {
 					reading, watching, or playing, remove item from your list
 				</ListItem>
 				<ListItem>
-					
 					<UpdateIcon className={classes.icon} color='secondary' />
 					Coming soon: calculation of the amount of time it will take you to
 					finish everything on your list

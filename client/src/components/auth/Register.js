@@ -68,12 +68,12 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 	return (
 		<Container component='main' maxWidth='xs'>
 			<div className={classes.paper}>
-				<Typography component='h1' variant='h5'>
-					Sign Up
-				</Typography>
 				<Avatar className={classes.avatar}>
 					<HowToRegOutlined />
 				</Avatar>
+				<Typography component='h1' variant='h5'>
+					Sign Up
+				</Typography>
 
 				<form className={classes.form} onSubmit={(e) => onSubmit(e)}>
 					<TextField
