@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
+import { Button, Typography } from '@material-ui/core';
 
 const ListRows = ({ list, title, clicked }) => {
 	const settings = {
@@ -23,14 +24,20 @@ const ListRows = ({ list, title, clicked }) => {
 			<div className='card-wrapper' key={_id}>
 				<div className='card'>
 					<div className='cardTop'>
-						<h2>{title}</h2>
-						<p className='releaseYear'>{release}</p>
+						<Typography variant='body2' component='h2'>
+							{title}
+						</Typography>
 					</div>
 					<img className='card_image' src={url} alt={title} />
 
-					<button onClick={() => onClick(_id)} className='btn-primary'>
+					<Button
+						type='submit'
+						variant='contained'
+						color='primary'
+						onClick={onClick}
+						className='btn-primary'>
 						Remove
-					</button>
+					</Button>
 				</div>
 			</div>
 		);
@@ -40,7 +47,9 @@ const ListRows = ({ list, title, clicked }) => {
 		<Fragment>
 			{!list.length ? null : (
 				<Fragment>
-					<h2 className='medium text-primary'>{title}</h2>
+					<Typography variant='h4' color='primary' component='h2'>
+						{title}
+					</Typography>
 					<Slider {...settings}>{listRow}</Slider>
 				</Fragment>
 			)}

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addMovie, addBook, addVideoGame } from '../../actions/profile';
+import { Button, Typography } from '@material-ui/core';
 
 const Card = ({
 	title,
@@ -41,14 +42,20 @@ const Card = ({
 	return (
 		<div className='card'>
 			<div className='cardTop'>
-				<h2>{title}</h2>
-				<p className='releaseYear'>{release}</p>
+				<Typography variant='body2' component='h2'>
+					{title}
+				</Typography>
 			</div>
 			<img className='card_image' src={url} alt={title} />
 
-			<button onClick={onClick} className='btn-primary'>
+			<Button
+				type='submit'
+				variant='contained'
+				color='primary'
+				onClick={onClick}
+				className='btn-primary'>
 				Add
-			</button>
+			</Button>
 		</div>
 	);
 };

@@ -21,17 +21,6 @@
 	flex-direction: column;
 	align-items: stretch;
 
-	button {
-		border-radius: 0;
-		padding: 0.3rem 0;
-		color: #fff;
-		width: 100%;
-
-		&:hover {
-			cursor: pointer;
-			opacity: 0.5;
-		}
-	}
 
 	img {
 		flex: 1;

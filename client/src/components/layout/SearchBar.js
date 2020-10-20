@@ -51,6 +51,7 @@ const SearchBar = ({
 
 	const { input, category } = formData;
 
+
 	const onSubmit = (e) => {
 		e.preventDefault();
 		clearResults();
@@ -134,7 +135,8 @@ const SearchBar = ({
 							className={classes.submit}
 							type='submit'
 							variant='contained'
-							color='primary'>
+							color='primary'
+							disabled= {!category}>
 							Search
 						</Button>
 					</Grid>

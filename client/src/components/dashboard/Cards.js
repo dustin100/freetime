@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import Card from './Card';
 
+
 const Cards = ({ results, loading }) => {
 	const cards = results.map(
 		({ title, release, length, rating, url, description, id, content }) => {

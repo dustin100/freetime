@@ -10,6 +10,7 @@ import {
 	AppBar,
 	Link,
 } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -45,7 +46,7 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading, profile } }) => {
 				component={RouterLink}
 				to='/search'
 				color='inherit'>
-				<i className='fas fa-search'></i> Search{' '}
+				<i className='fas fa-search'></i> Search
 			</Link>
 
 			<Link
