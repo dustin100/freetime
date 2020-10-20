@@ -5,15 +5,6 @@ import ListRows from './ListRows';
 import { Link } from 'react-router-dom';
 import { deleteGame, deleteBook, deleteMovie } from '../../actions/profile';
 
-import {
-	Button,
-	TextField,
-	Typography,
-	Container,
-	Avatar,
-	makeStyles,
-} from '@material-ui/core';
-
 const MyList = ({
 	profile: {
 		profile: { movies, books, videogames },
@@ -36,7 +27,6 @@ const MyList = ({
 
 	const isEmpty =
 		movies.length <= 0 && books.length <= 0 && videogames.length <= 0;
-	console.log(isEmpty);
 
 	return isEmpty ? (
 		<Fragment>

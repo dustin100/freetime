@@ -32,7 +32,6 @@ const Landing = ({ isAuthenticated }) => {
 					<Typography align='center' variant='h1' component='h1'>
 						Free Time
 					</Typography>
-					{/* <h1 className='x-large'>Free Time</h1> */}
 					<Typography align='center' variant='h6' component='p'>
 						Setup a profile to keep track of all the things you want to do in
 						your free time
@@ -43,8 +42,7 @@ const Landing = ({ isAuthenticated }) => {
 							color='primary'
 							component={RouterLink}
 							to='/register'
-							variant='contained'
-							color='primary'>
+							variant='contained'>
 							Sign Up
 						</Button>
 						<Button

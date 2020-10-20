@@ -112,17 +112,6 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading, profile } }) => {
 					)}
 				</Toolbar>
 			</AppBar>
-
-			{/* <nav className='navbar'>
-				<h1>
-					<Link to='/'>
-						<i className='fas fa-hourglass-half'></i> Free Time
-					</Link>
-				</h1>
-				{!loading && (
-					<Fragment> {isAuthenticated ? authLinks : guestLinks} </Fragment>
-				)}
-			</nav> */}
 		</Fragment>
 	);
 };

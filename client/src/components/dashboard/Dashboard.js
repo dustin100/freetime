@@ -5,6 +5,7 @@ import Spinner from '../layout/Spinner';
 import { getCurrentProfile } from '../../actions/profile';
 import ProfileSetup from './ProfileSetup';
 import MyList from './MyList';
+import { Typography } from '@material-ui/core';
 
 const Dashboard = ({
 	getCurrentProfile,
@@ -19,7 +20,13 @@ const Dashboard = ({
 		<Spinner />
 	) : (
 		<Fragment>
-			<h1 className='large text-primary'>{user && user.name}'s List</h1>
+			<Typography
+				color='primary'
+				component='h2'
+				variant='h2'
+				className='name-header'>
+				{user && user.name}'s List
+			</Typography>
 			{profile !== null ? (
 				<Fragment>
 					<MyList />

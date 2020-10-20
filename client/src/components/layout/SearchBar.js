@@ -51,7 +51,6 @@ const SearchBar = ({
 
 	const { input, category } = formData;
 
-
 	const onSubmit = (e) => {
 		e.preventDefault();
 		clearResults();
@@ -74,7 +73,7 @@ const SearchBar = ({
 		<Container component='main' maxWidth='xl'>
 			<form className={classes.form} onSubmit={onSubmit}>
 				<Grid container direction='row' justify='center' alignItems='center'>
-					<Grid item xs={3} spacing={0}>
+					<Grid item xs={3}>
 						<FormControl fullWidth>
 							<InputLabel id='category'>Category</InputLabel>
 							<Select
@@ -93,20 +92,7 @@ const SearchBar = ({
 							<FormHelperText>Pick a category</FormHelperText>
 						</FormControl>
 					</Grid>
-
-					{/* <select name='category' value={category} onChange={(e) => onChange(e)}>
-				<option value='default' hidden>
-					* Select Category{' '}
-				</option>
-				<option value='Movies'>Movies</option>
-				<option value='Books'>Books</option>
-				<option value='Video Games'>Video Games</option>
-			</select> */}
-
-					{/* <label className='visuallyHidden' htmlFor='site-search'>
-				Search the site:
-			</label> */}
-					<Grid item xs={8} spacing={0}>
+					<Grid item xs={8}>
 						<TextField
 							variant='outlined'
 							required
@@ -120,23 +106,13 @@ const SearchBar = ({
 							value={input}
 						/>
 					</Grid>
-					{/* <input
-				type='search'
-				id='site-search'
-				name='input'
-				required
-				placeholder='search for something'
-				aria-label='Search through site content'
-				value={input}
-				onChange={onChange}
-			/> */}
-					<Grid item xs={1} spacing={0}>
+					<Grid item xs={1}>
 						<Button
 							className={classes.submit}
 							type='submit'
 							variant='contained'
 							color='primary'
-							disabled= {!category}>
+							disabled={!category}>
 							Search
 						</Button>
 					</Grid>
