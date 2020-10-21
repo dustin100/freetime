@@ -81,7 +81,7 @@ const SearchBar = ({
 		<Container component='main' maxWidth='xl'>
 			<form className={classes.form} onSubmit={onSubmit}>
 				<Grid container direction='row' justify='center' alignItems='center'>
-					<Grid className={classes.cat} item xs={2}>
+					<Grid className={classes.cat} item sm={2} xs={8}>
 						<FormControl fullWidth>
 							<InputLabel id='category'>Category</InputLabel>
 							<Select
@@ -100,7 +100,7 @@ const SearchBar = ({
 							<FormHelperText>Pick a category</FormHelperText>
 						</FormControl>
 					</Grid>
-					<Grid item xs={6}>
+					<Grid item sm={6} xs={8}>
 						<TextField
 							variant='outlined'
 							required
@@ -115,7 +115,7 @@ const SearchBar = ({
 							value={input}
 						/>
 					</Grid>
-					<Grid item xs={1}>
+					<Grid item sm={1} xs={2}>
 						<Button
 							className={classes.submit}
 							type='submit'

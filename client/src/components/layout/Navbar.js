@@ -40,10 +40,16 @@ const useStyles = makeStyles((theme) => ({
 	},
 	logoText: {
 		marginLeft: 8,
+		fontWeight: 'bold',
 	},
 	buttonText: {
 		[theme.breakpoints.down('xs')]: {
 			display: 'none',
+		},
+	},
+	buttonIcon: {
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '2rem !important',
 		},
 	},
 }));
@@ -57,7 +63,12 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading, profile } }) => {
 				component={RouterLink}
 				to='/profile'
 				color='inherit'
-				startIcon={<FormatListBulletedIcon color='secondary' />}>
+				startIcon={
+					<FormatListBulletedIcon
+						className={classes.buttonIcon}
+						color='secondary'
+					/>
+				}>
 				<span className={classes.buttonText}> My List </span>
 			</Button>
 			<Button
@@ -65,7 +76,9 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading, profile } }) => {
 				component={RouterLink}
 				to='/search'
 				color='inherit'
-				startIcon={<SearchIcon color='secondary' />}>
+				startIcon={
+					<SearchIcon className={classes.buttonIcon} color='secondary' />
+				}>
 				<span className={classes.buttonText}> Search </span>
 			</Button>
 
