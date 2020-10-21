@@ -2,12 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
-import Login from './components/auth/Login';
-import Register from './components/auth/Register';
-import Alert from './components/layout/Alert';
-import Dashboard from './components/dashboard/Dashboard';
-import GetStarted from './components/dashboard/Search';
-import PrivateRoute from './components/routing/PrivateRoute';
+import Routes from './components/routing/Routes';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
@@ -15,7 +10,6 @@ import setAuthToken from './utils/setAuthToken';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from './theme';
-import Container from '@material-ui/core/Container';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -38,16 +32,10 @@ const App = () => {
 				<Router>
 					<Fragment>
 						<NavBar />
-						<Route exact path='/' component={Landing} />
-						<Container>
-							<Alert />
-							<Switch>
-								<Route exact path='/login' component={Login} />
-								<Route exact path='/register' component={Register} />
-								<PrivateRoute exact path='/profile' component={Dashboard} />
-								<PrivateRoute exact path='/search' component={GetStarted} />
-							</Switch>
-						</Container>
+						<Switch>
+							<Route exact path='/' component={Landing} />
+							<Route component={Routes} />
+						</Switch>
 					</Fragment>
 				</Router>
 			</ThemeProvider>
