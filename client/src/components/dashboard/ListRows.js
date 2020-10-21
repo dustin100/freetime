@@ -2,9 +2,18 @@ import React, { Fragment } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
-import { Button, Typography, Container } from '@material-ui/core';
+import { Button, Typography, Container, makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+	btn: {
+		borderTopLeftRadius: 0,
+		borderTopRightRadius: 0,
+	},
+}));
 
 const ListRows = ({ list, title, clicked }) => {
+	const classes = useStyles();
+
 	const settings = {
 		infinite: false,
 		speed: 500,
@@ -35,7 +44,7 @@ const ListRows = ({ list, title, clicked }) => {
 						variant='contained'
 						color='primary'
 						onClick={onClick}
-						className='btn-primary'>
+						className={classes.btn}>
 						Remove
 					</Button>
 				</div>

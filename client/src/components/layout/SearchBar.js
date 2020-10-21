@@ -30,6 +30,14 @@ const useStyles = makeStyles((theme) => ({
 	submit: {
 		padding: theme.spacing(2, 2),
 		margin: theme.spacing(1, 0, 0, 0),
+		borderTopLeftRadius: 0,
+		borderBottomLeftRadius: 0,
+	},
+	cat: {
+		marginRight: '1rem',
+	},
+	searchInput: {
+		borderRadius: 0,
 	},
 }));
 
@@ -73,7 +81,7 @@ const SearchBar = ({
 		<Container component='main' maxWidth='xl'>
 			<form className={classes.form} onSubmit={onSubmit}>
 				<Grid container direction='row' justify='center' alignItems='center'>
-					<Grid item xs={3}>
+					<Grid className={classes.cat} item xs={2}>
 						<FormControl fullWidth>
 							<InputLabel id='category'>Category</InputLabel>
 							<Select
@@ -92,7 +100,7 @@ const SearchBar = ({
 							<FormHelperText>Pick a category</FormHelperText>
 						</FormControl>
 					</Grid>
-					<Grid item xs={8}>
+					<Grid item xs={6}>
 						<TextField
 							variant='outlined'
 							required
@@ -103,6 +111,7 @@ const SearchBar = ({
 							margin='normal'
 							name='input'
 							fullWidth
+							className={classes.searchInput}
 							value={input}
 						/>
 					</Grid>

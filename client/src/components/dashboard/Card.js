@@ -2,7 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addMovie, addBook, addVideoGame } from '../../actions/profile';
-import { Button, Typography } from '@material-ui/core';
+import { Button, Typography, makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+	btn: {
+		borderTopLeftRadius: 0,
+		borderTopRightRadius: 0,
+		marginBottom: 30,
+	},
+}));
 
 const Card = ({
 	title,
@@ -17,6 +25,8 @@ const Card = ({
 	addBook,
 	addVideoGame,
 }) => {
+	const classes = useStyles();
+
 	const cardData = {
 		title,
 		release,
@@ -42,7 +52,7 @@ const Card = ({
 	return (
 		<div className='card'>
 			<div className='cardTop'>
-				<Typography variant='body2' component='h3'>
+				<Typography variant='body2' component='h2'>
 					{title}
 				</Typography>
 			</div>
@@ -53,7 +63,7 @@ const Card = ({
 				variant='contained'
 				color='primary'
 				onClick={onClick}
-				className='btn-primary'>
+				className={classes.btn}>
 				Add
 			</Button>
 		</div>

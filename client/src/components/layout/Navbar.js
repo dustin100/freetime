@@ -41,6 +41,11 @@ const useStyles = makeStyles((theme) => ({
 	logoText: {
 		marginLeft: 8,
 	},
+	buttonText: {
+		[theme.breakpoints.down('xs')]: {
+			display: 'none',
+		},
+	},
 }));
 
 const Navbar = ({ logout, auth: { isAuthenticated, loading, profile } }) => {
@@ -53,7 +58,7 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading, profile } }) => {
 				to='/profile'
 				color='inherit'
 				startIcon={<FormatListBulletedIcon color='secondary' />}>
-				My List
+				<span className={classes.buttonText}> My List </span>
 			</Button>
 			<Button
 				className={classes.navLinks}
@@ -61,7 +66,7 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading, profile } }) => {
 				to='/search'
 				color='inherit'
 				startIcon={<SearchIcon color='secondary' />}>
-				Search
+				<span className={classes.buttonText}> Search </span>
 			</Button>
 
 			<Button

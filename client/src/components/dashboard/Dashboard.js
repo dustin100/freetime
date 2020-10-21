@@ -5,13 +5,23 @@ import Spinner from '../layout/Spinner';
 import { getCurrentProfile } from '../../actions/profile';
 import ProfileSetup from './ProfileSetup';
 import MyList from './MyList';
-import { Typography } from '@material-ui/core';
+import { Typography, makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+	userName: {
+		fontWeight: 'bold',
+		textTransform: 'capitalize',
+		margin: '1.5rem 0',
+	},
+}));
 
 const Dashboard = ({
 	getCurrentProfile,
 	auth: { user },
 	profile: { profile, loading },
 }) => {
+	const classes = useStyles();
+
 	useEffect(() => {
 		getCurrentProfile();
 	}, [getCurrentProfile]);
@@ -23,8 +33,8 @@ const Dashboard = ({
 			<Typography
 				color='primary'
 				component='h2'
-				variant='h2'
-				className='name-header'>
+				variant='h3'
+				className={classes.userName}>
 				{user && user.name}'s List
 			</Typography>
 			{profile !== null ? (
