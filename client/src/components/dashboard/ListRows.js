@@ -2,14 +2,7 @@ import React, { Fragment } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
-import { Button, Typography, Container, makeStyles } from '@material-ui/core';
-
-const useStyles = makeStyles((theme) => ({
-	btn: {
-		borderTopLeftRadius: 0,
-		borderTopRightRadius: 0,
-	},
-}));
+import { Button, Typography, Container } from '@material-ui/core';
 
 const ListRows = ({ list, title, clicked }) => {
 	const settings = {
@@ -26,7 +19,7 @@ const ListRows = ({ list, title, clicked }) => {
 		clicked(id);
 	};
 
-	const listRow = list.map(({ title, release, url, _id }) => {
+	const listRow = list.map(({ title, url, _id }) => {
 		return (
 			<div className='card-wrapper' key={_id}>
 				<div className='card'>
