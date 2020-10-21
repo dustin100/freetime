@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Login = ({ login, isAuthenticated }) => {
+export const Login = ({ login, isAuthenticated }) => {
 	const classes = useStyles();
 
 	const [formData, setFormData] = useState({

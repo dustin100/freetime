@@ -59,7 +59,7 @@ const ProfileSetup = ({ createProfile, history, name }) => {
 				</ListItem>
 				<ListItem>
 					<FormatListBulletedIcon className={classes.icon} color='secondary' />
-					Checkout your list
+					Check out your list
 				</ListItem>
 				<ListItem>
 					<DeleteIcon className={classes.icon} color='secondary' /> After
