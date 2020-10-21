@@ -1,9 +1,27 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link as RouterLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Button, Typography, makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+	root: {
+		marginLeft: theme.spacing(2),
+	},
+
+	buttons: {
+		display: 'flex',
+		
+	},
+
+	btn: {
+		margin: theme.spacing(2, 2, 2),
+	},
+}));
 
 const Landing = ({ isAuthenticated }) => {
+	const classes = useStyles();
+
 	if (isAuthenticated) {
 		return <Redirect to='/profile' />;
 	}
@@ -11,18 +29,30 @@ const Landing = ({ isAuthenticated }) => {
 		<section className='landing'>
 			<div className='dark-overlay'>
 				<div className='landing-inner'>
-					<h1 className='x-large'>Free Time</h1>
-					<p className='lead'>
+					<Typography align='center' variant='h1' component='h1'>
+						Free Time
+					</Typography>
+					<Typography align='center' variant='h6' component='p'>
 						Setup a profile to keep track of all the things you want to do in
 						your free time
-					</p>
-					<div className='buttons'>
-						<Link to='/register' className='btn btn-primary'>
+					</Typography>
+					<div className={classes.buttons}>
+						<Button
+							className={classes.btn}
+							color='primary'
+							component={RouterLink}
+							to='/register'
+							variant='contained'>
 							Sign Up
-						</Link>
-						<Link to='/login' className='btn btn-light'>
+						</Button>
+						<Button
+							className={classes.btn}
+							component={RouterLink}
+							to='/login'
+							variant='contained'
+							color='secondary'>
 							Login
-						</Link>
+						</Button>
 					</div>
 				</div>
 			</div>

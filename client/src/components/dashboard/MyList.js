@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import ListRows from './ListRows';
 import { Link } from 'react-router-dom';
 import { deleteGame, deleteBook, deleteMovie } from '../../actions/profile';
+import { Typography, Button } from '@material-ui/core';
 
 const MyList = ({
 	profile: {
@@ -27,13 +28,14 @@ const MyList = ({
 
 	const isEmpty =
 		movies.length <= 0 && books.length <= 0 && videogames.length <= 0;
-	console.log(isEmpty);
 
 	return isEmpty ? (
 		<Fragment>
-			<p>Your List is Empty</p>
+			<Typography>Your List is Empty</Typography>
 			<Link to='/search'>
-				<button className='btn btn-primary'>Start Searching</button>
+				<Button variant='contained' color='primary'>
+					Start Searching
+				</Button>
 			</Link>
 		</Fragment>
 	) : (

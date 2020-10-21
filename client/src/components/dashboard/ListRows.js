@@ -2,8 +2,18 @@ import React, { Fragment } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
+import { Button, Typography, Container, makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+	btn: {
+		borderTopLeftRadius: 0,
+		borderTopRightRadius: 0,
+	},
+}));
 
 const ListRows = ({ list, title, clicked }) => {
+	const classes = useStyles();
+
 	const settings = {
 		infinite: false,
 		speed: 500,
@@ -23,14 +33,20 @@ const ListRows = ({ list, title, clicked }) => {
 			<div className='card-wrapper' key={_id}>
 				<div className='card'>
 					<div className='cardTop'>
-						<h2>{title}</h2>
-						<p className='releaseYear'>{release}</p>
+						<Typography variant='body2' component='h3'>
+							{title}
+						</Typography>
 					</div>
 					<img className='card_image' src={url} alt={title} />
 
-					<button onClick={() => onClick(_id)} className='btn-primary'>
+					<Button
+						type='submit'
+						variant='contained'
+						color='primary'
+						onClick={onClick}
+						className={classes.btn}>
 						Remove
-					</button>
+					</Button>
 				</div>
 			</div>
 		);
@@ -39,10 +55,13 @@ const ListRows = ({ list, title, clicked }) => {
 	return (
 		<Fragment>
 			{!list.length ? null : (
-				<Fragment>
-					<h2 className='medium text-primary'>{title}</h2>
+				<Container>
+					<Typography variant='h4' color='secondary' component='h2'>
+						{title}
+					</Typography>
+
 					<Slider {...settings}>{listRow}</Slider>
-				</Fragment>
+				</Container>
 			)}
 		</Fragment>
 	);

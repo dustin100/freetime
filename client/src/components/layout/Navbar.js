@@ -1,50 +1,136 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
+import {
+	Typography,
+	makeStyles,
+	Toolbar,
+	AppBar,
+	Link,
+	Button,
+} from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import UpdateIcon from '@material-ui/icons/Update';
+
+const useStyles = makeStyles((theme) => ({
+	root: {
+		marginLeft: theme.spacing(2),
+	},
+	menuButton: {
+		marginRight: theme.spacing(2),
+	},
+	title: {
+		flexGrow: 1,
+	},
+	titleColor: {
+		color: '#fff',
+	},
+	navLinks: {
+		marginRight: theme.spacing(1),
+		'&:hover': {
+			backgroundColor: 'transparent',
+			textDecoration: 'underline',
+		},
+	},
+	logo: {
+		display: 'flex',
+	},
+	logoText: {
+		marginLeft: 8,
+		fontWeight: 'bold',
+	},
+	buttonText: {
+		[theme.breakpoints.down('xs')]: {
+			display: 'none',
+		},
+	},
+	buttonIcon: {
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '2rem !important',
+		},
+	},
+}));
 
 const Navbar = ({ logout, auth: { isAuthenticated, loading, profile } }) => {
+	const classes = useStyles();
 	const authLinks = (
-		<ul>
-			<li>
-				<Link to='/profile'>
-					<i className='fas fa-th-list'></i> My List{' '}
-				</Link>
-				<Link to='/search'>
-					<i className='fas fa-search'></i> Search{' '}
-				</Link>
-			</li>
-			<li>
-				<Link onClick={logout} to='/'>
-					Logout
-				</Link>
-			</li>
-		</ul>
+		<Fragment>
+			<Button
+				className={classes.navLinks}
+				component={RouterLink}
+				to='/profile'
+				color='inherit'
+				startIcon={
+					<FormatListBulletedIcon
+						className={classes.buttonIcon}
+						color='secondary'
+					/>
+				}>
+				<span className={classes.buttonText}> My List </span>
+			</Button>
+			<Button
+				className={classes.navLinks}
+				component={RouterLink}
+				to='/search'
+				color='inherit'
+				startIcon={
+					<SearchIcon className={classes.buttonIcon} color='secondary' />
+				}>
+				<span className={classes.buttonText}> Search </span>
+			</Button>
+
+			<Button
+				color='inherit'
+				className={classes.navLinks}
+				component={RouterLink}
+				onClick={logout}
+				to='/'>
+				Logout
+			</Button>
+		</Fragment>
 	);
 
 	const guestLinks = (
-		<ul>
-			<li>
-				<Link to='/register'>Register</Link>
-			</li>
-			<li>
-				<Link to='/login'>Login</Link>
-			</li>
-		</ul>
+		<Typography className={classes.root}>
+			<Button
+				className={classes.navLinks}
+				component={RouterLink}
+				to='/register'
+				color='inherit'>
+				Register
+			</Button>
+
+			<Button
+				className={classes.navLinks}
+				component={RouterLink}
+				to='/login'
+				color='inherit'>
+				Login
+			</Button>
+		</Typography>
 	);
 
 	return (
-		<nav className='navbar'>
-			<h1>
-				<Link to='/'>
-					<i className='fas fa-hourglass-half'></i> Free Time
-				</Link>
-			</h1>
-			{!loading && (
-				<Fragment> {isAuthenticated ? authLinks : guestLinks} </Fragment>
-			)}
-		</nav>
+		<Fragment>
+			<AppBar position='static'>
+				<Toolbar>
+					<Typography variant='h5' className={classes.title}>
+						<Link component={RouterLink} color='inherit' to='/'>
+							<div className={classes.logo}>
+								<UpdateIcon color='secondary' fontSize='large' />{' '}
+								<div className={classes.logoText}>Free Time</div>
+							</div>
+						</Link>
+					</Typography>
+					{!loading && (
+						<Fragment> {isAuthenticated ? authLinks : guestLinks} </Fragment>
+					)}
+				</Toolbar>
+			</AppBar>
+		</Fragment>
 	);
 };
 Navbar.propTypes = {

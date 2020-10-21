@@ -3,6 +3,7 @@ import {
 	PROFILE_ERROR,
 	CLEAR_PROFILE,
 	UPDATE_LISTS,
+	LOGOUT,
 } from '../actions/types';
 
 const initialState = {
@@ -28,8 +29,10 @@ export default function (state = initialState, action) {
 				...state,
 				error: payload,
 				loading: false,
+				profile:null
 			};
-		case CLEAR_PROFILE: {
+		case CLEAR_PROFILE:
+		case LOGOUT: {
 			return {
 				...state,
 				profile: null,
