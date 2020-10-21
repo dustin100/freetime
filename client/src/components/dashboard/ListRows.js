@@ -12,8 +12,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ListRows = ({ list, title, clicked }) => {
-	const classes = useStyles();
-
 	const settings = {
 		infinite: false,
 		speed: 500,
@@ -43,8 +41,8 @@ const ListRows = ({ list, title, clicked }) => {
 						type='submit'
 						variant='contained'
 						color='primary'
-						onClick={onClick}
-						className={classes.btn}>
+						onClick={() => onClick(_id)}
+						className='btn-primary'>
 						Remove
 					</Button>
 				</div>
