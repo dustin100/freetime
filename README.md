@@ -11,7 +11,13 @@ A MERN stack application that utilizes Redux. Using three APIs, a user can searc
 Clone the repository and ensure the latest version of Node.js is installed on your machine.
 Run npm install to install all dependencies. 
 
-In the project directory, you can run: npm run dev
+### Please Read Before Running
+Since this project is just a demo site, it uses cors-anywhere to get around any cors related issues. To prevent cors errors you need to visit: 
+[http://cors-anywhere.herokuapp.com/corsdemo](http://cors-anywhere.herokuapp.com/corsdemo) 
+Then click on the "Request temporary access to the demo server" button. 
+
+In the project directory, you can run: *npm run dev*
 
 ### npm run build 
-Builds the app for production to the dist folder.  
+Builds the app for production to the dist folder. 
+ 
